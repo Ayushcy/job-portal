@@ -57,11 +57,16 @@ export default function Navbar() {
             
             {session && session.user ? (
               <div className="flex items-center gap-4">
-                {session.user.image && (
-                  <img src={session.user.image} alt="Profile" style={{ width: '32px', height: '32px', borderRadius: '50%' }} />
-                )}
-                <span className="text-muted" style={{ fontWeight: 500 }}>Hey, {session.user.name?.split(' ')[0]}</span>
-                <button onClick={handleLogout} className="btn-outline" style={{ padding: '0.5rem 1rem' }}>Logout</button>
+                <Link href="/dashboard" style={{ display: 'flex', alignItems: 'center', gap: '8px', textDecoration: 'none', color: 'var(--text-primary)' }}>
+                  {session.user.image && (
+                    <img src={session.user.image} alt="Profile" style={{ width: '36px', height: '36px', borderRadius: '50%', border: '2px solid var(--primary-color)' }} />
+                  )}
+                  <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    <span style={{ fontWeight: 600, fontSize: '0.9rem' }}>{session.user.name?.split(' ')[0]}</span>
+                    <span style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>View Dashboard</span>
+                  </div>
+                </Link>
+                <button onClick={handleLogout} className="btn-outline" style={{ padding: '0.4rem 0.8rem', fontSize: '0.85rem' }}>Logout</button>
               </div>
             ) : (
               <div className="flex items-center gap-3">
