@@ -48,6 +48,7 @@ export const authOptions: NextAuthOptions = {
     },
   },
   pages: {
-    signIn: '/', // Or a dedicated signin page if we make one
+    signIn: '/', 
   },
+  secret: process.env.NEXTAUTH_SECRET || "fallback_secret_for_dev_only",
 };
